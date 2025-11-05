@@ -67,9 +67,11 @@ Intermediate CSV files in `/opt/airflow/data/` were deleted after loading to mai
 |------|-------------|
 | `fetch_persons` | Generates synthetic person records and saves to CSV |
 | `fetch_companies` | Generates synthetic company records and saves to CSV |
-| `merge_csvs` | Merges both CSVs into one dataset |
-| `load_csv_to_pg` | Loads merged data into PostgreSQL |
-| `clear_folder` | Removes intermediate CSVs |
+| `merge_csvs` | Merges both CSV files into one unified employee dataset |
+| `load_csv_to_pg` | Loads the merged dataset into the PostgreSQL database (`week8_demo.employees`) |
+| `analyze_data` | Runs SQL queries on the stored data to identify patterns (email domain usage, common first/last names, company naming structure), and prints results to Airflow logs |
+| `clear_folder` | Removes intermediate CSV files from the Airflow data directory to maintain a clean environment |
+
 
 
 ## Visuals
