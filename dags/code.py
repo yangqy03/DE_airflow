@@ -206,6 +206,48 @@ with DAG(
         conn_id="Postgres", csv_path=merged_path, table=TARGET_TABLE
     )
 
+    @task()
+    def analyze_data():
+        hook = PostgresHook(postgres_conn_id="Postgres")
+
+        queries = {
+            "Most Common Email Providers": """
+                SELECT SPLIT_PART(email, '@', 2) AS email_domain, COUNT(*) AS num_users
+                FROM week8_demo.employees
+                GROUP BY email_domain
+                ORDER BY num_users DESC
+                LIMIT 15;
+            """,
+            "Most Common First Names": """
+                SELECT firstname, COUNT(*) AS name_count
+                FROM week8_demo.employees
+                GROUP BY firstname
+                ORDER BY name_count DESC
+                LIMIT 10;
+            """,
+            "Company Name Structure Patterns": """
+                SELECT
+                    CASE
+                        WHEN company_name ILIKE '%LLC%' THEN 'LLC'
+                        WHEN company_name ILIKE '%Group%' THEN 'Group'
+                        WHEN company_name ILIKE '%Inc%' THEN 'Inc'
+                        WHEN company_name ILIKE '%PLC%' THEN 'PLC'
+                        WHEN company_name ILIKE '%and%' THEN 'Family / Partnership Name'
+                        ELSE 'Other'
+                    END AS company_type,
+                    COUNT(*) AS count
+                FROM week8_demo.employees
+                GROUP BY company_type
+                ORDER BY count DESC;
+            """,
+        }
+
+        for title, sql in queries.items():
+            print(f"\n--- {title} ---")
+            results = hook.get_records(sql)
+            for row in results:
+                print(row)
+
     clean_folder = clear_folder(folder_path=OUTPUT_DIR)
 
-    load_to_database >> clean_folder
+    load_to_database >> analyze_data() >> clean_folder

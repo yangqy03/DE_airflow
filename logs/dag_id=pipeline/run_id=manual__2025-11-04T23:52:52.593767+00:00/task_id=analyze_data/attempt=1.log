@@ -1,0 +1,35 @@
+{"timestamp":"2025-11-04T23:52:55.978530Z","level":"info","event":"DAG bundles loaded: dags-folder","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager","filename":"manager.py","lineno":179}
+{"timestamp":"2025-11-04T23:52:55.979170Z","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/code.py","logger":"airflow.models.dagbag.DagBag","filename":"dagbag.py","lineno":593}
+{"timestamp":"2025-11-04T23:52:56.068259Z","level":"warning","event":"This setter is for backward compatibility and should not be used.\nSince the introduction of connection property, the providers listed below breaks due to assigning value to self.connection in their __init__ method.\n* apache-airflow-providers-mysql<5.7.1\n* apache-airflow-providers-elasticsearch<5.5.1\n* apache-airflow-providers-postgres<5.13.0","logger":"airflow.task.hooks.airflow.providers.postgres.hooks.postgres.PostgresHook","filename":"sql.py","lineno":249}
+{"timestamp":"2025-11-04T23:52:56.068595Z","level":"info","event":"","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.068727Z","level":"info","event":"--- Most Common Email Providers ---","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.072341Z","level":"info","event":"Running statement: \n                SELECT SPLIT_PART(email, '@', 2) AS email_domain, COUNT(*) AS num_users\n                FROM week8_demo.employees\n                GROUP BY email_domain\n                ORDER BY num_users DESC\n                LIMIT 15;\n            , parameters: None","logger":"airflow.task.hooks.airflow.providers.postgres.hooks.postgres.PostgresHook","filename":"sql.py","lineno":810}
+{"timestamp":"2025-11-04T23:52:56.073333Z","level":"info","event":"Rows affected: 3","logger":"airflow.task.hooks.airflow.providers.postgres.hooks.postgres.PostgresHook","filename":"sql.py","lineno":822}
+{"timestamp":"2025-11-04T23:52:56.073613Z","level":"info","event":"('hotmail.com', 207)","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.073751Z","level":"info","event":"('yahoo.com', 200)","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.074065Z","level":"info","event":"('gmail.com', 193)","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.074303Z","level":"info","event":"","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.074641Z","level":"info","event":"--- Most Common First Names ---","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.077436Z","level":"info","event":"Running statement: \n                SELECT firstname, COUNT(*) AS name_count\n                FROM week8_demo.employees\n                GROUP BY firstname\n                ORDER BY name_count DESC\n                LIMIT 10;\n            , parameters: None","logger":"airflow.task.hooks.airflow.providers.postgres.hooks.postgres.PostgresHook","filename":"sql.py","lineno":810}
+{"timestamp":"2025-11-04T23:52:56.078785Z","level":"info","event":"Rows affected: 10","logger":"airflow.task.hooks.airflow.providers.postgres.hooks.postgres.PostgresHook","filename":"sql.py","lineno":822}
+{"timestamp":"2025-11-04T23:52:56.078997Z","level":"info","event":"('Michael', 17)","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.079138Z","level":"info","event":"('Robert', 16)","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.079236Z","level":"info","event":"('David', 14)","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.079323Z","level":"info","event":"('Jennifer', 10)","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.079397Z","level":"info","event":"('Kimberly', 9)","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.079499Z","level":"info","event":"('Amanda', 8)","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.079568Z","level":"info","event":"('Richard', 8)","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.079646Z","level":"info","event":"('Gregory', 8)","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.079704Z","level":"info","event":"('Christopher', 7)","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.079800Z","level":"info","event":"('Amy', 7)","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.079990Z","level":"info","event":"","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.080065Z","level":"info","event":"--- Company Name Structure Patterns ---","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.083364Z","level":"info","event":"Running statement: \n                SELECT\n                    CASE\n                        WHEN company_name ILIKE '%LLC%' THEN 'LLC'\n                        WHEN company_name ILIKE '%Group%' THEN 'Group'\n                        WHEN company_name ILIKE '%Inc%' THEN 'Inc'\n                        WHEN company_name ILIKE '%PLC%' THEN 'PLC'\n                        WHEN company_name ILIKE '%and%' THEN 'Family / Partnership Name'\n                        ELSE 'Other'\n                    END AS company_type,\n                    COUNT(*) AS count\n                FROM week8_demo.employees\n                GROUP BY company_type\n                ORDER BY count DESC;\n            , parameters: None","logger":"airflow.task.hooks.airflow.providers.postgres.hooks.postgres.PostgresHook","filename":"sql.py","lineno":810}
+{"timestamp":"2025-11-04T23:52:56.085410Z","level":"info","event":"Rows affected: 6","logger":"airflow.task.hooks.airflow.providers.postgres.hooks.postgres.PostgresHook","filename":"sql.py","lineno":822}
+{"timestamp":"2025-11-04T23:52:56.085597Z","level":"info","event":"('Family / Partnership Name', 246)","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.085686Z","level":"info","event":"('Other', 223)","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.085774Z","level":"info","event":"('Group', 37)","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.085849Z","level":"info","event":"('Inc', 34)","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.085938Z","level":"info","event":"('LLC', 34)","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.086031Z","level":"info","event":"('PLC', 26)","logger":"task.stdout"}
+{"timestamp":"2025-11-04T23:52:56.085616Z","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.providers.standard.decorators.python._PythonDecoratedOperator","filename":"python.py","lineno":218}
