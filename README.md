@@ -20,7 +20,7 @@ http://localhost:8080
 
 ![chat 6](./screenshots_charts/airflow_1.png)
 
-![chat 4](./screenshots_charts/dag.png)
+![chat 8](./screenshots_charts/dag.png)
 
 ### connect to DBeaver:
 
