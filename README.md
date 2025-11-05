@@ -28,6 +28,7 @@ http://localhost:8080
 
 ### 4. View final dataset in PostgreSQL via DBeaver.
 
+![chat 10](./screenshots_charts/view.png)
 ![chat 5](./screenshots_charts/dbeavor.png)
 
 ## Pipeline Architecture
@@ -71,7 +72,7 @@ Intermediate CSV files in `/opt/airflow/data/` were deleted after loading to mai
 | `clear_folder` | Removes intermediate CSVs |
 
 
-## SQL Analysis
+## Visuals
 
 ### **1. Company-Level Grouping**
 Company names are unique due to one-to-one merge structure, so aggregation is not meaningful:
